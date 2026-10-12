@@ -22,10 +22,10 @@ async function suite(mobile,hash){
   await sleep(200);
   if(!hash){$('#go').click();await sleep(800);ok('launch shows whoami',T($('#out')).includes('Cedrick Luna.'));ok('intro hidden',$('#intro').style.display==='none')}
   else {await sleep(500);ok('deep link opens how tab',!!$('#det'))}
-  await cmd('about');ok('about',T($('#sin')).includes('Path')&&T($('#out')).includes('Masalunga'));
+  await cmd('about');ok('about',T($('#sin')).includes('Path')&&T($('#out')).includes('Cedrick'));
   await cmd('skills');ok('skills groups',T($('#sin')).includes('AI tools')||mobile);
   const sk=$('.sk');if(sk){sk.click();await sleep(50);ok('skill evidence',T($('#evt')).length>12&&!T($('#evt')).includes('Select a skill'))}
-  await cmd('certs');ok('certs',T($('#sin')).includes('PL/SQL Developer')&&$$('#sin img').length===3);
+  await cmd('certs');ok('certs',T($('#sin')).includes('PL/SQL Developer')&&$$('#sin img').length===4&&$$('#sin a.cert-card').length===4&&$$('#sin a.course-card').length===1);
   await cmd('projects');ok('projects list',T($('#sin')).includes('Weather Dashboard'));
   for(const [id,part,needle] of [['taskly','firestore','security rules'],['weather','api','OpenWeatherMap'],['empower','validate','PL/SQL checks'],['kiosk','sync','Spark']]){
     await cmd('open '+id);ok(id+' overview',T($('#sin')).includes('Overview')&&(id==='kiosk'||id==='empower'||$$('#sin img').length===1));
