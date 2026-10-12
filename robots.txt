@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ced-builds.vercel.app/sitemap.xml
