@@ -62,7 +62,6 @@ a{color:var(--acc);text-underline-offset:3px}
 .ov-layout.no-image{grid-template-areas:'summary' 'details'}
 .ov-image{grid-area:image}
 .ov-copy{display:contents}
-.contact-title{display:none}
 .card2.contact-email{display:grid;grid-template-columns:44px minmax(0,1fr);gap:10px;padding:10px 12px}
 .contact-email .ic{grid-column:1;grid-row:1}
 .contact-info{grid-column:2;min-width:0}

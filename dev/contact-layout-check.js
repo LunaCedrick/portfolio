@@ -70,10 +70,10 @@ async function main() {
       const socialPass = JSON.stringify(result.socialCards.map(({ label, handle }) => [label, handle]))
           === JSON.stringify([['GitHub', 'LunaCedrick'], ['LinkedIn', 'in/cedluna'], ['Facebook', 'cedrick.luna.50']])
         && result.socialCards.every(card => card.target === '_blank' && card.rel.split(/\s+/).includes('noopener') && card.height >= 56);
-      const headingPass = result.headingDisplay === 'none';
+      const headingPass = result.headingDisplay !== 'none';
       console.log(`${buttonsPass ? 'PASS' : 'FAIL'} ${width}px email actions are equal-width, at least 44px tall, and use 13px text`);
       console.log(`${socialPass ? 'PASS' : 'FAIL'} ${width}px social cards are single linked rows, at least 56px tall`);
-      console.log(`${headingPass ? 'PASS' : 'FAIL'} ${width}px stage heading is hidden`);
+      console.log(`${headingPass ? 'PASS' : 'FAIL'} ${width}px stage heading is visible`);
       await page.locator('#sin .contact-actions [data-c="send"]').click();
       const composerPass = await page.locator('#sin #cf').waitFor({ state: 'visible', timeout: 2500 }).then(() => true).catch(() => false);
       console.log(`${composerPass ? 'PASS' : 'FAIL'} ${width}px Write a message opens the composer`);
@@ -81,7 +81,7 @@ async function main() {
       if (!overflowPass) failures.push(`${width}px horizontal overflow: ${result.offenders.join(', ') || `${result.pageWidth}px document width`}`);
       if (!buttonsPass) failures.push(`${width}px email action layout is invalid`);
       if (!socialPass) failures.push(`${width}px social card links are invalid`);
-      if (!headingPass) failures.push(`${width}px stage heading is visible`);
+      if (!headingPass) failures.push(`${width}px stage heading is hidden`);
       if (!composerPass) failures.push(`${width}px Write a message did not open the composer`);
     }
 
