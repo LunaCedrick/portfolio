@@ -145,7 +145,7 @@ async function sendMsg(f){const x=f.elements,d={name:x.cn.value.trim(),email:x.c
  if(d.website)return;
  if(!d.name||!d.message||!/^\S+@\S+\.\S+$/.test(d.email)){st.textContent='Please add your name, a valid email, and a message.';return}
  st.textContent='Sending...';
- if(W3F_KEY){try{const r=await fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify({access_key:W3F_KEY,subject:'Message from '+d.name+' (portfolio)',from_name:'Portfolio site',name:d.name,email:d.email,message:d.message,botcheck:false})});const j=await r.json();if(!j.success)throw new Error('send');done(d,'sent')}catch(e){st.textContent='That did not go through. You can also write to cedrick.luna.work@gmail.com.'}}
+ if(W3F_KEY){try{const r=await fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify({access_key:W3F_KEY,subject:'Message from '+d.name+' (portfolio)',from_name:'Portfolio site',name:d.name,email:d.email,replyto:d.email,message:d.message,botcheck:false})});const j=await r.json();if(!j.success)throw new Error('send');done(d,'sent')}catch(e){st.textContent='That did not go through. You can also write to cedrick.luna.work@gmail.com.'}}
  else{const a=document.createElement('a');a.href='mailto:cedrick.luna.work@gmail.com?subject='+encodeURIComponent('Message from '+d.name)+'&body='+encodeURIComponent(d.message+'\n\n'+d.name+' ('+d.email+')');a.click();done(d,'mail')}}
 document.addEventListener('submit',e=>{if(e.target.id==='cf'){e.preventDefault();sendMsg(e.target)}});
 function stageHTML(path){
