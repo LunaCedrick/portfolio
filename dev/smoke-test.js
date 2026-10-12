@@ -25,7 +25,7 @@ async function suite(mobile,hash){
   await cmd('about');ok('about',T($('#sin')).includes('Path')&&T($('#out')).includes('Cedrick'));
   await cmd('skills');ok('skills groups',T($('#sin')).includes('AI tools')||mobile);
   const sk=$('.sk');if(sk){sk.click();await sleep(50);ok('skill evidence',T($('#evt')).length>12&&!T($('#evt')).includes('Select a skill'))}
-  await cmd('certs');ok('certs',T($('#sin')).includes('PL/SQL Developer')&&T($('#sin')).includes('Claude Academy: Claude Code 101')&&$$('#sin img').length===4&&$$('#sin a.cert-card').length===4&&$$('#sin a.course-card').length===2&&$$('#sin a.course-card[href="https://academy.claude.com/verify/df1dcc6d306a14d9fe8b38930a5ac793"]').length===1);
+  await cmd('certs');ok('certs',T($('#sin')).includes('PL/SQL Developer')&&T($('#sin')).includes('Claude Academy: Claude Code 101')&&T($('#sin')).includes('LinkedIn Learning')&&T($('#sin')).includes('Issued Oct 12, 2026')&&!T($('#sin')).includes('Credential ID')&&!T($('#sin')).includes('course completion')&&$$('#sin img').length===4&&$$('#sin a.cert-card').length===4&&$$('#sin a.course-card').length===2&&$$('#sin a.course-card[href="https://academy.claude.com/verify/df1dcc6d306a14d9fe8b38930a5ac793"]').length===1);
   await cmd('projects');ok('projects list',T($('#sin')).includes('Weather Dashboard'));
   for(const [id,part,needle] of [['taskly','firestore','security rules'],['weather','api','OpenWeatherMap'],['empower','validate','PL/SQL checks'],['kiosk','sync','Spark']]){
     await cmd('open '+id);ok(id+' overview',T($('#sin')).includes('Overview')&&(id==='kiosk'||id==='empower'||$$('#sin img').length===1));
