@@ -62,6 +62,16 @@ a{color:var(--acc);text-underline-offset:3px}
 .ov-layout.no-image{grid-template-areas:'summary' 'details'}
 .ov-image{grid-area:image}
 .ov-copy{display:contents}
+.contact-title{display:none}
+.card2.contact-email{display:grid;grid-template-columns:44px minmax(0,1fr);gap:10px;padding:10px 12px}
+.contact-email .ic{grid-column:1;grid-row:1}
+.contact-info{grid-column:2;min-width:0}
+.contact-email-address{font-size:13px;white-space:nowrap;overflow-wrap:normal}
+.contact-actions{grid-column:1/-1;display:flex;gap:8px;width:100%}
+.contact-actions .chip{flex:1;min-width:0;width:auto;min-height:44px}
+.card2.contact-mobile{display:flex;align-items:center;min-height:56px;padding:6px 12px;gap:12px;color:var(--ink);text-decoration:none}
+.contact-mobile-copy{flex:1;min-width:0}
+.contact-arrow{margin-left:auto;color:var(--acc);font-size:14px}
 }
 #wrap{transition:opacity 1s ease,transform 1s cubic-bezier(.4,0,.2,1)}
 #wrap.pre{opacity:0;transform:translateY(14px) scale(.96);pointer-events:none}
